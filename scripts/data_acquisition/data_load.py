@@ -1,4 +1,4 @@
-# ideam_data.py
+# data_load.py
 
 import requests
 import json
@@ -8,31 +8,35 @@ import zipfile
 import io
 import pandas as pd
 import os
+from tqdm import tqdm
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import numpy as np
 from datetime import datetime
 import multiprocessing as mp
 from functools import partial
-from tqdm import tqdm
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-# Deshabilitar advertencias de solicitudes inseguras
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+# Definir la ruta de la carpeta de datos
+WORKSPACE = os.path.abspath(os.path.join(os.getcwd(), '../../'))
+DATA_FOLDER = os.path.join(WORKSPACE, 'data')
 
-def get_station_data(station_codes, start_date, end_date, id_parametro, etiqueta, data_folder, group_size=20):
+print("Workspace:", WORKSPACE)
+print("Data folder:", DATA_FOLDER)
+
+def get_station_data(station_codes, start_date, end_date, id_parametro, etiqueta, group_size=20):
     """
-    Descarga datos de estaciones del servidor IDEAM.
+    Obtiene datos de estaciones del servidor IDEAM.
 
-    Args:
-        station_codes (list): Lista de códigos de estaciones
-        start_date (str): Fecha de inicio en formato 'YYYY-MM-DD'
-        end_date (str): Fecha de fin en formato 'YYYY-MM-DD'
-        id_parametro (str): ID del parámetro a obtener
-        etiqueta (str): Etiqueta del parámetro
-        data_folder (str): Carpeta donde se guardarán los archivos descargados
-        group_size (int): Tamaño del grupo de estaciones para procesar
+    Entradas:
+    - station_codes: Lista de códigos de estaciones
+    - start_date: Fecha de inicio
+    - end_date: Fecha de fin
+    - id_parametro: ID del parámetro a obtener
+    - etiqueta: Etiqueta del parámetro
+    - group_size: Tamaño del grupo de estaciones para procesar
 
-    Returns:
-        None
+    Salida:
+    - None (guarda los archivos en DATA_FOLDER)
     """
     url = "http://dhime.ideam.gov.co/server/rest/services/AtencionCiudadano/DescargarArchivo/GPServer/DescargarArchivo/submitJob"
     groups = [station_codes[i:i + group_size] for i in range(0, len(station_codes), group_size)]
@@ -73,12 +77,12 @@ def get_station_data(station_codes, start_date, end_date, id_parametro, etiqueta
                                     if filename.endswith('.csv'):
                                         with zip_file.open(filename) as f:
                                             csv_data = f.read()
-                                        os.makedirs(f'{data_folder}/variables/', exist_ok=True)
-                                        with open(f'{data_folder}/variables/{etiqueta}.csv', 'ab') as file:
+                                        os.makedirs(f'{DATA_FOLDER}/variables/', exist_ok=True)
+                                        with open(f'{DATA_FOLDER}/variables/{etiqueta}.csv', 'ab') as file:
                                             file.write(csv_data)
                                         saved_data = True
                             break
-                        except Exception:
+                        except Exception as e:
                             if not saved_data:
                                 empty_groups += 1
                             break
@@ -155,7 +159,7 @@ def procesar_estaciones_paralelo(catalogo_estaciones_activas, variables_datafram
                                  output_folder, chunk_size=500):
     """
     Procesa todas las estaciones en paralelo usando todos los núcleos disponibles,
-    procesando en lotes de estaciones y mostrando el progreso con una barra de progreso.
+    procesando en lotes de 100 estaciones y mostrando el progreso con una barra de progreso.
     
     Args:
         catalogo_estaciones_activas (pd.DataFrame): DataFrame con las estaciones activas.
@@ -163,7 +167,6 @@ def procesar_estaciones_paralelo(catalogo_estaciones_activas, variables_datafram
         fecha_inicio (str): Fecha de inicio del período a procesar.
         fecha_fin (str): Fecha fin del período a procesar.
         output_folder (str): Carpeta donde se guardarán los archivos CSV.
-        chunk_size (int): Tamaño de cada lote de estaciones.
     """
     # Crear la carpeta de salida si no existe
     os.makedirs(output_folder, exist_ok=True)
@@ -204,12 +207,20 @@ def procesar_estaciones_paralelo(catalogo_estaciones_activas, variables_datafram
             pbar.update(len(lote))
             
             # Contadores parciales
+            estaciones_con_datos = 0
+            estaciones_sin_datos = 0
+            estaciones_con_error = 0
+            
+            # Mostrar resultados parciales y actualizar contadores globales
             for resultado in resultados:
                 if "no tiene datos" in resultado:
+                    estaciones_sin_datos += 1
                     estaciones_sin_datos_global += 1
                 elif "Error" in resultado:
+                    estaciones_con_error += 1
                     estaciones_con_error_global += 1
                 else:
+                    estaciones_con_datos += 1
                     estaciones_con_datos_global += 1
 
     # Mostrar resumen final
@@ -254,65 +265,9 @@ def consolidar_csv(data_path, output_file):
     
     print(f"Archivo CSV consolidado guardado en: {output_file}")
 
-def download_cne(data_folder):
-    """
-    Descarga el catálogo nacional de estaciones del IDEAM y lo guarda en data_folder.
-
-    Args:
-        data_folder (str): Carpeta donde se guardará el archivo descargado.
-    """
+def download_cne():
     url = "https://bart.ideam.gov.co/cneideam/CNE_IDEAM.xls"
-    os.makedirs(data_folder, exist_ok=True)
+    os.makedirs(DATA_FOLDER, exist_ok=True)
     file_name = os.path.basename(url)
-    file_path = os.path.join(data_folder, file_name)
-    response = requests.get(url, verify=False)
-
-    if response.status_code == 200:
-        with open(file_path, 'wb') as file:
-            file.write(response.content)
-        print(f"Catálogo de estaciones descargado en {file_path}")
-    else:
-        print("Error al descargar el catálogo de estaciones.")
-
-def calcular_acumulados(df):
-    """
-    Calcula los promedios móviles de ciertas variables en el DataFrame.
-
-    Args:
-        df (pd.DataFrame): DataFrame con los datos de las estaciones.
-
-    Returns:
-        pd.DataFrame: DataFrame con los acumulados calculados.
-    """
-    # Asegurar que la columna Fecha está en formato de fecha
-    df['Fecha'] = pd.to_datetime(df['Fecha'])
-    
-    # Ordenar por CodigoEstacion y Fecha para asegurar el cálculo adecuado
-    df = df.sort_values(by=['CodigoEstacion', 'Fecha'])
-    
-    # Definir los días para los que se calcularán promedios y sumatorias
-    dias_promedios = [1, 3, 7, 15, 30]
-    
-    # Listas de columnas
-    columnas_promedio = ['PTPM_CON','HR_CAL_MN_D', 'HR_CAL_MX_D', 'NV_MEDIA_D', 'NV_MN_D', 'NV_MX_D', 'TMN_CON', 'TMX_CON']
-    
-    # Crear un nuevo DataFrame para almacenar los resultados
-    df_resultado = df.copy()
-    
-    # Calcular promedios móviles para cada estación
-    for dias in dias_promedios:
-        for col in columnas_promedio:
-            if col in df_resultado.columns:
-                # Crear la columna nueva para el promedio
-                col_nueva = f'{col}_{dias}D'
-                # Calcular el promedio
-                df_resultado[col_nueva] = df.groupby('CodigoEstacion')[col].transform(lambda x: x.shift(1).rolling(window=dias, min_periods=dias).mean())
-
-    # Redondear a dos decimales
-    df_resultado = df_resultado.round(2)
-
-    # Eliminar filas donde todas las columnas de acumulados son NaN
-    acumulados_columns = [f'{col}_{dias}D' for dias in dias_promedios for col in columnas_promedio if f'{col}_{dias}D' in df_resultado.columns]
-    df_resultado = df_resultado.dropna(how='all', subset=acumulados_columns)
-
-    return df_resultado
+    file_path = os.path.join(DATA_FOLDER, file_name)
+    response = requests.get(url, verify
