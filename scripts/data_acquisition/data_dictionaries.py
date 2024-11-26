@@ -1,5 +1,3 @@
-# data_dictionaries.py
-
 from data_load import (
     download_cne,
     get_station_data,
