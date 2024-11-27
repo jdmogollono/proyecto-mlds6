@@ -270,4 +270,42 @@ def download_cne():
     os.makedirs(DATA_FOLDER, exist_ok=True)
     file_name = os.path.basename(url)
     file_path = os.path.join(DATA_FOLDER, file_name)
-    response = requests.get(url, verify
+    response = requests.get(url, verify=False)
+
+    if response.status_code == 200:
+        with open(file_path, 'wb') as file:
+            file.write(response.content)
+    else:
+        pass
+ 
+def calcular_promedios(df):
+    # Asegurar que la columna Fecha está en formato de fecha
+    df['Fecha'] = pd.to_datetime(df['Fecha'])
+    
+    # Ordenar por CodigoEstacion y Fecha para asegurar el cálculo adecuado
+    df = df.sort_values(by=['CodigoEstacion', 'Fecha'])
+    
+    # Definir los días para los que se calcularán promedios
+    dias_promedios = [1, 3, 7, 15, 30]
+    
+    # Listas de columnas
+    columnas_promedio = ['PTPM_CON','HR_CAL_MN_D', 'HR_CAL_MX_D', 'NV_MEDIA_D', 'NV_MN_D', 'NV_MX_D', 'TMN_CON', 'TMX_CON']
+    
+    # Crear un nuevo DataFrame para almacenar los resultados
+    df_resultado = df.copy()
+    
+    # Calcular promedios móviles para cada estacion
+    for dias in dias_promedios:
+        for col in columnas_promedio:
+            # Crear la columna nueva para el promedio
+            col_nueva = f'{col}_{dias}D'
+            # Calcular el promedio
+            df_resultado[col_nueva] = df.groupby('CodigoEstacion')[col].transform(lambda x: x.shift(1).rolling(window=dias, min_periods=dias).mean())
+
+    # Redondear a dos decimales
+    df_resultado = df_resultado.round(2)
+
+    # Eliminar filas donde todas las columnas son NaN
+    df_resultado = df_resultado.dropna(how='all', subset=[f'{col}_{dias}D' for dias in dias_promedios for col in columnas_promedio])
+
+    return df_resultado
