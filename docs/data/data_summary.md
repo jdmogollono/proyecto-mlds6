@@ -74,7 +74,7 @@ En esta sección se describe la variable objetivo. Se muestra la distribución d
 
 PTPM_CON= Precipitacion acumulada diaria
 
-![Distribución de la variable PTPM_CON](PTPM_CON_Distribucion.png)
+![Distribución de la variable PTPM_CON](/proyecto-mlds6/docs/data/images/PTPM_CON_Distribucion.png)
 
 Esta distribución sería esperable en datos meteorológicos. La mayoría de los días tienen poca o ninguna precipitación, y solo unos pocos tienen precipitaciones muy altas (tormentas, etc.).
 
@@ -98,13 +98,13 @@ En esta sección se presenta un análisis detallado de cada variable individual.
 | TMX_CON        | Temperatura máxima diaria            |
 
 Distribuciones variables:
-![Distribución de la variable HR_CAL_MN_D](Dis_HR_CAL_MN_D.png)
-![Distribución de la variable HR_CAL_MX_D](Dis_HR_CAL_MX_D.png)
-![Distribución de la variable NV_MEDIA_D](Dis_NV_MEDIA_D.png)
-![Distribución de la variable NV_MN_D](Dis_NV_MN_D.png)
-![Distribución de la variable NV_MX_D](Dis_NV_MX_D.png)
-![Distribución de la variable TMN_CON](Dis_TMX_CON.png)
-![Distribución de la variable TMX_CON](Dis_TMN_CON.png)
+![Distribución de la variable HR_CAL_MN_D](/proyecto-mlds6/docs/data/images/Dis_HR_CAL_MN_D.png)
+![Distribución de la variable HR_CAL_MX_D](/proyecto-mlds6/docs/data/images/Dis_HR_CAL_MX_D.png)
+![Distribución de la variable NV_MEDIA_D](/proyecto-mlds6/docs/data/images/Dis_NV_MEDIA_D.png)
+![Distribución de la variable NV_MN_D](/proyecto-mlds6/docs/data/images/Dis_NV_MN_D.png)
+![Distribución de la variable NV_MX_D](/proyecto-mlds6/docs/data/images/Dis_NV_MX_D.png)
+![Distribución de la variable TMN_CON](/proyecto-mlds6/docs/data/images/Dis_TMX_CON.png)
+![Distribución de la variable TMX_CON](/proyecto-mlds6/docs/data/images/Dis_TMN_CON.png)
 
 Estadistica descriptiva
 | Variable       | Count         | Mean        | Std         | Min        | 25%        | 50%        | 75%        | Max        |
