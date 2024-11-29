@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto tiene como objetivo desarrollar un modelo de predicción de precipitaciones utilizando técnicas avanzadas de Deep Learning, específicamente redes neuronales de tipo LSTM (Long Short-Term Memory). La precisión en la predicción de precipitaciones es crucial para diversas industrias y sectores, incluyendo meteorología, agricultura, gestión de riesgos y energía.
+Este proyecto tiene como objetivo desarrollar un modelo de predicción de precipitaciones utilizando técnicas avanzadas de Deep Learning, específicamente redes neuronales de tipo DNN (Deep Neural Network). La precisión en la predicción de precipitaciones es crucial para diversas industrias y sectores, incluyendo meteorología, agricultura, gestión de riesgos y energía.
 
 ```
 ├── scripts/
