@@ -45,13 +45,25 @@ Se adoptará una metodología estructurada que incluye:
 
 ## Cronograma
 
-| Etapa                                         | Duración Estimada | Fechas                             |
-|-----------------------------------------------|-------------------|------------------------------------|
-| Entendimiento del negocio y carga de datos    | 2 semanas         | Hasta el 25 de octubre             |
-| Preprocesamiento y análisis exploratorio      | 1 semana          | Del 26 de octubre al 1 de noviembre |
-| Diseño e implementación                       | 1 semana          | Del 2 de noviembre al 8 de noviembre|
-| Entrenamiento y validación                    | 1 semana          | Del 9 de noviembre al 15 de noviembre|
-| Evaluación y entrega final                    | 1 semana          | Del 16 de noviembre al 22 de noviembre|
+| No. | Actividad                                          | Detalles                                                            | Fecha         |
+|-----|----------------------------------------------------|---------------------------------------------------------------------|---------------|
+| 1   | **Entendimiento del negocio y carga de datos**     | - Código de la carga de datos                                        | Del 8 al 15 de noviembre       |
+|     |                                                    | - Marco de proyecto                                                  | Del 8 al 15 de noviembre        |
+|     |                                                    | - Creación de diccionarios de datos                                  | Del 8 al 15 de noviembre        |
+| 2   | **Preprocesamiento, análisis exploratorio**        | - Código del preprocesamiento y análisis exploratorio                | Del 15 al 22 de noviembre       |
+|     |                                                    | - Definición de los datos                                            | Del 15 al 22 de noviembre       |
+|     |                                                    | - Reporte del resumen de los datos                                   | Del 22 al 28 de noviembre       |
+| 3   | **Modelamiento y extracción de características**   | - Código de extracción de características                             | Del 28 noviembre al 5 de diciembre      |
+|     |                                                    | - Código del modelamiento                                            | Del 28 noviembre al 5 de diciembre       |
+|     |                                                    | - Reporte de la línea base de los modelos                            | Del 28 noviembre al 5 de diciembre       |
+|     |                                                    | - Reporte del modelo final                                           | Del 5 al 12 de diciembre       |
+| 4   | **Despliegue**                                     | - Código del despliegue                                              | Del 12 al 19 de diciembre       |
+|     |                                                    | - Documentación del despliegue                                       | Del 12 al 19 de diciembre       |
+|     |                                                    | - Documentación de la infraestructura                                | Del 12 al 19 de diciembre       |
+| 5   | **Evaluación y entrega final**                     | - Código de evaluación del modelo                                    | Del 19 al 21 de diciembre       |
+|     |                                                    | - Interpretación de los resultados                                   | Del 19 al 21 de diciembre       |
+|     |                                                    | - Video con presentación del proyecto                                | Del 19 al 21 de diciembre       |
+
 
 *Nota: Las fechas son estimadas y pueden ajustarse según el progreso del proyecto.*
 
