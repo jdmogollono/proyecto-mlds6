@@ -74,7 +74,7 @@ En esta sección se describe la variable objetivo. Se muestra la distribución d
 
 PTPM_CON= Precipitacion acumulada diaria
 
-![Distribución de la variable PTPM_CON](/proyecto-mlds6/docs/data/images/PTPM_CON_Distribucion.png)
+![Distribución de la variable PTPM_CON](/docs/data/images/PTPM_CON_Distribucion.png)
 
 Esta distribución sería esperable en datos meteorológicos. La mayoría de los días tienen poca o ninguna precipitación, y solo unos pocos tienen precipitaciones muy altas (tormentas, etc.).
 
