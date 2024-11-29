@@ -38,8 +38,7 @@
 ### Base de datos de destino
 
 - **Base de datos de destino:**
-  - Los datos procesados y consolidados se almacenan como archivos CSV en la ruta de destino especificada por el usuario.
-  - Ejemplo de ruta de salida: `<WORKSPACE>/data/procesados/`.
+  - Los datos procesados y consolidados se almacenan como archivos CSV en la ruta de destino`<WORKSPACE>/data/`.
 
 - **Estructura de la base de datos de destino:**
   - Cada archivo de salida es un CSV con las siguientes columnas principales:

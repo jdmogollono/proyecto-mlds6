@@ -6,7 +6,7 @@
 
 ## Objetivo del Proyecto
 
-Desarrollar un modelo de predicción de precipitaciones basado en técnicas de Deep Learning, específicamente utilizando redes neuronales LSTM, para mejorar la precisión en los pronósticos meteorológicos. Este proyecto es crucial para ayudar a instituciones meteorológicas, gobiernos, sector agrícola, compañías de seguros y empresas energéticas en la planificación, gestión de riesgos y toma de decisiones informadas.
+Desarrollar un modelo de predicción de precipitaciones basado en técnicas de Deep Learning, específicamente utilizando redes neuronales DNN, para mejorar la precisión en los pronósticos meteorológicos. Este proyecto es crucial para ayudar a instituciones meteorológicas, gobiernos, sector agrícola, compañías de seguros y empresas energéticas en la planificación, gestión de riesgos y toma de decisiones informadas.
 
 ## Alcance del Proyecto
 
@@ -14,16 +14,14 @@ Desarrollar un modelo de predicción de precipitaciones basado en técnicas de D
 
 - **Descripción de los datos disponibles**: Utilización de datos históricos de precipitaciones y variables meteorológicas recopilados por estaciones del IDEAM desde el año 2000 hasta 2023. Los datos incluyen información geográfica (latitud, longitud, altitud) y temporal.
 
-- **Descripción de los resultados esperados**: Desarrollo de un modelo predictivo que utilice LSTM para anticipar niveles de precipitación en puntos geográficos específicos con alta precisión.
+- **Descripción de los resultados esperados**: Desarrollo de un modelo predictivo que utilice DNN para anticipar niveles de precipitación en puntos geográficos específicos.
 
 - **Criterios de éxito del proyecto**:
-  - El modelo debe superar el rendimiento de modelos tradicionales como ARIMA.
   - Capacidad de generalización del modelo en datos de prueba.
+  - Despliegue del modelo en un entorno de prueba.
   - Entrega de un informe y presentación final que detallen la metodología y resultados obtenidos.
 
 ### Excluye:
-
-- **Desarrollo de una interfaz de usuario o API para clientes finales**: El proyecto se centrará en el desarrollo del modelo y no en la creación de aplicaciones o interfaces para su uso directo.
 
 - **Integración con sistemas existentes de los beneficiarios**: No se realizará la adaptación o integración del modelo en plataformas o sistemas actuales de los stakeholders.
 
