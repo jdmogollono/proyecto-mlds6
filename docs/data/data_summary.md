@@ -98,13 +98,13 @@ En esta sección se presenta un análisis detallado de cada variable individual.
 | TMX_CON        | Temperatura máxima diaria            |
 
 Distribuciones variables:
-![Distribución de la variable HR_CAL_MN_D](/proyecto-mlds6/docs/data/images/Dis_HR_CAL_MN_D.png)
-![Distribución de la variable HR_CAL_MX_D](/proyecto-mlds6/docs/data/images/Dis_HR_CAL_MX_D.png)
-![Distribución de la variable NV_MEDIA_D](/proyecto-mlds6/docs/data/images/Dis_NV_MEDIA_D.png)
-![Distribución de la variable NV_MN_D](/proyecto-mlds6/docs/data/images/Dis_NV_MN_D.png)
-![Distribución de la variable NV_MX_D](/proyecto-mlds6/docs/data/images/Dis_NV_MX_D.png)
-![Distribución de la variable TMN_CON](/proyecto-mlds6/docs/data/images/Dis_TMX_CON.png)
-![Distribución de la variable TMX_CON](/proyecto-mlds6/docs/data/images/Dis_TMN_CON.png)
+![Distribución de la variable HR_CAL_MN_D](/docs/data/images/Dis_HR_CAL_MN_D.png)
+![Distribución de la variable HR_CAL_MX_D](/docs/data/images/Dis_HR_CAL_MX_D.png)
+![Distribución de la variable NV_MEDIA_D](/docs/data/images/Dis_NV_MEDIA_D.png)
+![Distribución de la variable NV_MN_D](/docs/data/images/Dis_NV_MN_D.png)
+![Distribución de la variable NV_MX_D](/docs/data/images/Dis_NV_MX_D.png)
+![Distribución de la variable TMN_CON](/docs/data/images/Dis_TMX_CON.png)
+![Distribución de la variable TMX_CON](/docs/data/images/Dis_TMN_CON.png)
 
 Estadistica descriptiva
 | Variable       | Count         | Mean        | Std         | Min        | 25%        | 50%        | 75%        | Max        |
