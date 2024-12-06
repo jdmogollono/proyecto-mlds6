@@ -4,4 +4,5 @@ env_vars*
 credentials*
 **/build/*
 data/
+!docs/data/
 .DS_Store
