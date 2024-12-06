@@ -98,6 +98,7 @@ En esta sección se presenta un análisis detallado de cada variable individual.
 | TMX_CON        | Temperatura máxima diaria            |
 
 Distribuciones variables:
+
 ![Distribución de la variable HR_CAL_MN_D](/docs/data/images/Dis_HR_CAL_MN_D.png)
 ![Distribución de la variable HR_CAL_MX_D](/docs/data/images/Dis_HR_CAL_MX_D.png)
 ![Distribución de la variable NV_MEDIA_D](/docs/data/images/Dis_NV_MEDIA_D.png)
@@ -119,11 +120,9 @@ Estadistica descriptiva
 
 
 
+## Relación entre variables explicativas y variable objetivo
 
-
-## Ranking de variables
-
-En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación, el análisis de componentes principales (PCA) o la importancia de las variables en un modelo de aprendizaje automático.
+En esta sección se presenta un ranking de las variables más importantes para predecir la variable objetivo. Se utilizan técnicas como la correlación,  o la importancia de las variables en un modelo de aprendizaje automático.
 
 Correlaciones: 
 | Variable       | Correlación Máxima | Correlación Mínima | Correlación Promedio |
@@ -139,8 +138,6 @@ Correlaciones:
 | DOY            | 0.225094           | -0.153102          | 0.052857             |
 | TMX_CON        | 0.083413           | -0.412070          | -0.147917            |
 
-El análisis de correlación entre la precipitación acumulada diaria (PTPM_CON) y las demás variables meteorológicas se llevó a cabo mediante una función que procesa los datos de cada estación de forma individual y calcula el promedio de la correlación para cada una de las variables meteorológicas, tomando en cuenta todas las estaciones. Para garantizar la calidad de los datos, se eliminaron las filas con valores nulos y se exigió un número mínimo de 1000 registros para calcular las correlaciones. Los resultados muestran que la humedad relativa mínima (HR_CAL_MN_D) tiene la correlación promedio más alta (0.173), seguida por el nivel del agua máximo (NV_MX_D) con 0.148 y la humedad relativa máxima (HR_CAL_MX_D) con 0.140. Por otro lado, la temperatura mostró una correlación negativa (-0.148), y las variables temporales (día, semana y mes del año) presentaron correlaciones muy bajas, alrededor de 0.05, lo que indica que su influencia sobre la precipitación es mínima. Por ende, se decide eliminar los datos de temperatura y temporales. Se aplico la misma metodologia para el dataset de acumulados y se obtuvieros resultados similares, sin embargo, este dataset nos permite tomar como variable de entrada el comportamiento de la precipitacion de los dias anteriores, lo cual puede influir en mejor rendimiento de los modelos que se prueben.
+El análisis de correlación entre la precipitación acumulada diaria (PTPM_CON) y las demás variables meteorológicas se llevó a cabo mediante una función que procesa los datos de cada estación de forma individual y calcula el promedio de la correlación para cada una de las variables meteorológicas, tomando en cuenta todas las estaciones. Para garantizar la calidad de los datos, se eliminaron las filas con valores nulos y se exigió un número mínimo de 1000 registros para calcular las correlaciones. Los resultados muestran que la humedad relativa mínima (HR_CAL_MN_D) tiene la correlación promedio más alta (0.173), seguida por el nivel del agua máximo (NV_MX_D) con 0.148 y la humedad relativa máxima (HR_CAL_MX_D) con 0.140. Por otro lado, la temperatura mostró una correlación negativa (-0.148), y las variables temporales (día, semana y mes del año) presentaron correlaciones muy bajas, alrededor de 0.05, lo que indica que su influencia sobre la precipitación es mínima. Se aplico la misma metodologia para el dataset de promedios y se obtuvieros resultados similares, sin embargo, este dataset nos permite tomar como variable de entrada el comportamiento de la precipitacion de los dias anteriores, lo cual puede influir en mejor rendimiento de los modelos que se prueben. Por ende, se decide tomar los datos promedios de dias anteriores de la variable precipitacion. A continuacion se muestran su matriz de correlación:
 
-## Relación entre variables explicativas y variable objetivo
-
-En esta sección se presenta un análisis de la relación entre las variables explicativas y la variable objetivo. Se utilizan gráficos como la matriz de correlación y el diagrama de dispersión para entender mejor la relación entre las variables. Además, se pueden utilizar técnicas como la regresión lineal para modelar la relación entre las variables.
+![Distribución de la variable TMX_CON](/docs/data/images/correlation_matrix.png)

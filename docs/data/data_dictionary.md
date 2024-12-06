@@ -16,8 +16,8 @@
 | TMN_CON           | Temperatura mínima diaria.                  | float64         | Valores reales negativos y positivos | IDEAM       |
 | TMX_CON           | Temperatura máxima diaria.                  | float64         | Valores reales negativos y positivos | IDEAM       |
 
-## Base de datos 2 data_acumulados.csv
-**Descripción:** Datos preprocesados y enriquecidos con acumulados temporales (1 día, 3 días, 7 días, 15 días y 30 días) de variables meteorológicas para modelado predictivo.
+## Base de datos 2 data_promedios.csv
+**Descripción:** Datos preprocesados con promedios temporales de 1, 3, 7, 15 y 30 días previos de variables meteorológicas para modelado predictivo.
 
 | Variable           | Descripción                                      | Tipo de dato     | Rango/Valores posibles       | Fuente de datos       |
 |---------------------|--------------------------------------------------|------------------|------------------------------|-----------------------|
