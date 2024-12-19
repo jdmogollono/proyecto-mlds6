@@ -33,7 +33,8 @@
 
 **Diagrama de arquitectura:**  
 
-![image](https://github.com/user-attachments/assets/080ee910-114e-420e-aea2-306a954de63d)
+![image](https://github.com/user-attachments/assets/6465b461-4da4-43d1-a6eb-c49bdf4a1459)
+
 
 
 
