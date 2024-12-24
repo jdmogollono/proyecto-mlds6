@@ -114,13 +114,66 @@ El modelo final logró eliminar el sesgo presente en el modelo anterior, siendo 
 
 ## Impacto del proyecto
 
-- Descripción del impacto del modelo en el negocio o en la industria.
-- Identificación de las áreas de mejora y oportunidades de desarrollo futuras.
+El modelo de predicción de precipitaciones desarrollado tiene un impacto significativo en diversas áreas y sectores clave:
+
+### Instituciones Meteorológicas y Ambientales
+- **Mejora en los pronósticos:** El modelo proporciona predicciones más precisas de precipitaciones, permitiendo a las instituciones ajustar sus sistemas de alerta temprana y planificación climática.
+- **Capacidad predictiva ampliada:** Con la incorporación de datos históricos y el uso de redes neuronales profundas, las instituciones pueden cubrir más regiones con precisión.
+
+### Sector Agrícola
+- **Planificación eficiente:** Los agricultores pueden optimizar el uso de recursos hídricos y planificar mejor los ciclos de siembra y cosecha basándose en predicciones confiables.
+- **Mitigación de riesgos:** Identificar patrones de sequías o lluvias excesivas ayuda a reducir pérdidas económicas y mejorar la sostenibilidad.
+
+### Gobiernos y Gestión de Riesgos
+- **Gestión proactiva de emergencias:** Los gobiernos locales pueden anticiparse a fenómenos como inundaciones y sequías, tomando decisiones informadas para proteger a las comunidades.
+- **Infraestructura resiliente:** Permite planificar y construir infraestructuras adaptadas a los patrones climáticos previstos.
+
+### Sector Energético
+- **Optimización de recursos:** Las compañías hidroeléctricas y de energías renovables pueden ajustar su producción basándose en pronósticos precisos de lluvias.
+- **Reducción de riesgos:** Minimiza las interrupciones causadas por fenómenos climáticos inesperados.
+
+### Compañías de Seguros
+- **Gestión de riesgos climáticos:** El modelo puede integrarse en la evaluación de riesgos, permitiendo ajustar pólizas y calcular primas de manera más efectiva.
+
+## Identificación de Áreas de Mejora y Oportunidades de Desarrollo Futuras
+
+   - En trabajos futuros podría ser útil explorar el uso de datos satelitales o modelos globales como ENSO (El Niño–Oscilación del Sur) para enriquecer las predicciones.
+   - Se puede investigar el uso de redes de grafos (GNN) para capturar relaciones entre estaciones.
+   - Se podrían implementar mecanismos para procesamiento de datos y actualización de modelos en tiempo real para asegurar que el modelo se encuentre actualizado.
+   - Se podría probar el modelo en regiones adicionales y con datos más recientes para evaluar su capacidad de generalización.
+   - Escalar el modelo para su integración en plataformas existentes utilizadas por los stakeholders.
+   - Utilizar técnicas de interpretabilidad como SHAP para identificar cómo cada variable impacta las predicciones, aumentando la confianza en los resultados.
+   - Involucrar expertos de diferentes campos para enriquecer las capacidades predictivas y asegurar que el modelo cumpla con las expectativas de los stakeholders
 
 ## Conclusiones
 
-- Resumen de los resultados y principales logros del proyecto.
-- Conclusiones finales y recomendaciones para futuros proyectos.
+## Resumen de los Resultados y Principales Logros del Proyecto
+
+1. **Desarrollo exitoso del modelo predictivo:**
+   - El modelo de redes neuronales profundas (DNN) alcanzó un MAE de ~0.044, estableciendo un valor de referencia para futuros trabajos.
+   - Se logró predecir con precisión valores de precipitación en regiones geográficas diversas.
+
+2. **Creación de un dataset robusto:**
+   - Se consolidó un dataset con más de 17.9 millones de registros. Se incluyeron métricas avanzadas como promedios móviles.
+
+3. **Automatización de procesos:**
+   - Se implementaron flujos eficientes de extracción, consolidación y preprocesamiento de datos, aprovechando técnicas de procesamiento paralelo.
+
+4. **Despliegue funcional:**
+   - El modelo fue desplegado con éxito en un entorno de prueba mediante FastAPI y visualizado interactivamente con Folium.
+
+5. **Impacto tangible en los sectores clave:**
+   - La herramienta desarrollada tiene aplicaciones directas en meteorología, agricultura, gestión de riesgos, y otros sectores.
+
+## Conclusiones Finales y Recomendaciones para Futuros Proyectos
+
+### Conclusiones Finales
+
+El proyecto de predicción de precipitaciones utilizando redes neuronales profundas logró:
+- **Precisión:** Métricas de referencia satisfactorias y resultados consistentes.
+- **Relevancia práctica:** Beneficiar directamente a stakeholders mediante una herramienta escalable y aplicable.
+- **Robustez metodológica:** Combinar técnicas avanzadas de preprocesamiento, modelamiento y despliegue.
+
 
 ## Agradecimientos
 
